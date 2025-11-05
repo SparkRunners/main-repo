@@ -1,0 +1,42 @@
+# This yml will work after the images have been created of the Basic implementation of the fullstack app
+version: "3.9"
+
+networks:
+  bth-spark-net:
+    driver: bridge
+
+services:
+  # auth service pushed image service
+  server-auth:
+    image: hihassan1998/spark-auth-server:1.0
+    container_name: auth-api-server
+    networks:
+      - bth-spark-net
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    volumes:
+    # /FROM_local_FILE : TO_cont_file
+      - ./data:/app/data
+  
+  # user service pushed image
+  server-user:
+    image: hihassan1998/spark-user-server:1.0
+    container_name: user-api-server
+    networks:
+      - bth-spark-net
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/data
+   # frontend service pushed image
+  webbclient:
+    image: hihassan1998/spark-webclient:1.0
+    container_name: spark-webclient
+    networks:
+      - bth-spark-net
+    ports:
+      - "xxxx:xxxx"
+    restart: unless-stopped
+    command: ["npm", "run", "dev"]
