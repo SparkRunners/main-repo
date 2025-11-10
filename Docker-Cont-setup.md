@@ -9,15 +9,13 @@ NOTE: THis doc is still being worked on....
   - [Table of contents](#table-of-contents)
   - [Description](#description)
     - [Project tree setup and cloning required repos](#project-tree-setup-and-cloning-required-repos)
-  - [This is how your project tree should look before and after geting all repos locally on your machines](#this-is-how-your-project-tree-should-look-before-and-after-geting-all-repos-locally-on-your-machines)
     - [How to work during development phase (i.e Daily flow)](#how-to-work-during-development-phase-ie-daily-flow)
-      - [This is an example of if you are working on the auth-server-service](#this-is-an-example-of-if-you-are-working-on-the-auth-server-service)
 
 ## Description
 This gide helps setup the local docker containers with volumes mounted for developemt phase of the project wiht easy to follw instructions.
 
 ### Project tree setup and cloning required repos
-## This is how your project tree should look before and after geting all repos locally on your machines
+**This is how your project tree should look before and after geting all repos locally on your machines**
 **Note: To get this project file structure you need to have the main-repo already cloned insde the vteam06 folder you created when cloning the main-repo.**
 ```
 ./vteam06/
@@ -45,23 +43,23 @@ This gide helps setup the local docker containers with volumes mounted for devel
 
 
 ### How to work during development phase (i.e Daily flow)
-#### This is an example of if you are working on the auth-server-service
+**This is an example of; when you are working on the auth-server-service**
 
 1. Go into the specific service folder you’re working on (while standing in the main repo):
 ```bash
  cd ../auth-service
 ```
-3. Pull the latest updates:
+1. Pull the latest updates:
 ```bash
  git pull origin dev
 ```
-4. Work on your feature branch:
+1. Work on your feature branch:
 ```bash
  git checkout -b feature/XXX
 ```
-5. Edit code locally in VS Code.
+1. Edit code locally in VS Code.
 -----
-6. For testing the changes live or after coding, run all services together from the main repo:
+1. For testing the changes live or after coding, run all services together from the main repo:
 ```bash
  cd ../main
  docker-compose up
