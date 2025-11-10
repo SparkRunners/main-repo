@@ -1,14 +1,15 @@
 # main-repo
 
-### Innehållsförteckning
+## Innehållsförteckning
 - [main-repo](#main-repo)
-    - [Innehållsförteckning](#innehållsförteckning)
+  - [Innehållsförteckning](#innehållsförteckning)
   - [Beskrivning](#beskrivning)
   - [Installation och körning](#installation-och-körning)
     - [Express Application / Server Körning](#express-application--server-körning)
     - [Läsa auth api dokumentation](#läsa-auth-api-dokumentation)
 ## Beskrivning
 This repo contains the docker-compose file to start up the project locally with volumes attached for easy changing in the images of the various projeckt related micro-services.
+
 
 
 ## Installation och körning
@@ -33,7 +34,7 @@ http://localhost:PORT_FRÅN_FE_CONTAINER
 ### Express Application / Server Körning
 1. Köra container servicen auth-server:
 ```bash
- composer-up server-auth
+ composer-up auth-server
 ```
 2. Installera beroenden:
 
