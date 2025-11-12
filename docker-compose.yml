@@ -7,36 +7,57 @@ networks:
 
 services:
   # auth service pushed image service
-  server-auth:
-    image: hihassan1998/spark-auth-server:1.0
-    container_name: auth-api-server
-    networks:
-      - bth-spark-net
-    ports:
-      - "3000:3000"
-    restart: unless-stopped
-    volumes:
-    # /FROM_local_FILE : TO_cont_file
-      - ./data:/app/data
+  # server-auth:
+  # # Uncomment next line after building the iamges and pushing to dockerhub and comment out the build task lines for all services.
+  #   # image: hihassan1998/spark-auth-server:1.0
+  #   build: ../auth-server-service 
+  #   container_name: auth-api-server
+  #   networks:
+  #     - bth-spark-net
+  #   ports:
+  #     - "3001:3000"
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ../auth-service:/app 
   
   # user service pushed image
   server-user:
-    image: hihassan1998/spark-user-server:1.0
+    # image: hihassan1998/spark-user-server:1.0
+    build: ../user-server-service
     container_name: user-api-server
     networks:
       - bth-spark-net
     ports:
-      - "3000:3000"
+      - "3002:3000"
     restart: unless-stopped
     volumes:
-      - ./data:/app/data
-   # frontend service pushed image
-  webbclient:
-    image: hihassan1998/spark-webclient:1.0
-    container_name: spark-webclient
-    networks:
-      - bth-spark-net
-    ports:
-      - "1300:1300"
-    restart: unless-stopped
+      - ../user-server-service:/app
     command: ["npm", "run", "dev"]
+  
+  # frontend service pushed image user UI
+  # webclientuser:
+  #   # image: hihassan1998/spark-webclient-user:1.0
+  #   build: ../frontend-user-service
+  #   container_name: spark-webclient-user
+  #   networks:
+  #     - bth-spark-net
+  #   ports:
+  #     - "3003:5173"
+  #   restart: unless-stopped
+  #   command: ["npm", "run", "dev"]
+  #   volumes:
+  #     - ../frontend-user-service:/app
+  
+  # frontend service pushed image admin UI
+  # webclientadmin:
+  #   # image: hihassan1998/spark-webclient-admin:1.0
+  #   build: ../frontend-admin-service
+  #   container_name: spark-webclient-admin
+  #   networks:
+  #     - bth-spark-net
+  #   ports:
+  #     - "3004:5173"
+  #   restart: unless-stopped
+  #   command: ["npm", "run", "dev"]
+  #   volumes:
+  #     - ../frontend-admin-service:/app

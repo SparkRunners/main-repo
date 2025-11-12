@@ -1,13 +1,21 @@
 #!/bin/bash
 # <Working on this!!>
+# Parent folder for all services
+PROJECT_ROOT=../vteam06-elspark
 
-echo "Cloning all micro service repos..."
-git clone https://github.com/your-org/auth-service.git ../auth-service
-git clone https://github.com/SparkRunners/user-server-service.git ../frontend-service
+mkdir -p $PROJECT_ROOT
 
-# Edit later two FE repos
-git clone https://github.com/your-org/frontend-user-service.git ../frontend-user-service
-git clone https://github.com/your-org/frontend-admin-service.git ../frontend-admin-service
+echo "Cloning all micro service repos into $PROJECT_ROOT..."
+# clone the main-repor again inside the vteam06 project root
+
+git clone https://github.com/SparkRunners/main-repo.git $PROJECT_ROOT/main-repo
+# backend server repos
+git clone https://github.com/SparkRunners/auth-server-service.git $PROJECT_ROOT/auth-server-service 
+git clone https://github.com/SparkRunners/user-server-service.git $PROJECT_ROOT/user-server-service
+
+# admin and user UI two FE repos
+git clone https://github.com/SparkRunners/frontend-user-service.git $PROJECT_ROOT/frontend-user-service
+git clone https://github.com/SparkRunners/frontend-admin-service.git $PROJECT_ROOT/frontend-admin-service
 
 
 echo "Starting containers..."
