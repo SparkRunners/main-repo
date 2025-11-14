@@ -45,20 +45,20 @@ services:
   #   ports:
   #     - "3003:5173"
   #   restart: unless-stopped
-  #   command: ["npm", "run", "dev"]
+  #   command: ["npm", "run", "dev", "--", "--host"]
   #   volumes:
   #     - ../frontend-user-service:/app
   
   # frontend service pushed image admin UI
-  # webclientadmin:
-  #   # image: hihassan1998/spark-webclient-admin:1.0
-  #   build: ../frontend-admin-service
-  #   container_name: spark-webclient-admin
-  #   networks:
-  #     - bth-spark-net
-  #   ports:
-  #     - "3004:5173"
-  #   restart: unless-stopped
-  #   command: ["npm", "run", "dev"]
-  #   volumes:
-  #     - ../frontend-admin-service:/app
+  webclientadmin:
+    # image: hihassan1998/spark-webclient-admin:1.0
+    build: ../frontend-admin-service
+    container_name: spark-webclient-admin
+    networks:
+      - bth-spark-net
+    ports:
+      - "3004:5173"
+    restart: unless-stopped
+    command: ["sh", "-c", "npm install && npm run dev -- --host"]
+    volumes:
+      - ../frontend-admin-service:/app:cached
