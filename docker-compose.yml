@@ -7,18 +7,19 @@ networks:
 
 services:
   # auth service pushed image service
-  # server-auth:
-  # # Uncomment next line after building the iamges and pushing to dockerhub and comment out the build task lines for all services.
-  #   # image: hihassan1998/spark-auth-server:1.0
-  #   build: ../auth-server-service 
-  #   container_name: auth-api-server
-  #   networks:
-  #     - bth-spark-net
-  #   ports:
-  #     - "3001:3000"
-  #   restart: unless-stopped
-  #   volumes:
-  #     - ../auth-service:/app 
+  server-auth:
+  # Uncomment next line after building the iamges and pushing to dockerhub and comment out the build task lines for all services.
+    # image: hihassan1998/spark-auth-server:1.0
+    build: ../auth-server-service 
+    container_name: auth-api-server
+    networks:
+      - bth-spark-net
+    ports:
+      - "3001:3000"
+    restart: unless-stopped
+    volumes:
+      - ../auth-server-service:/app
+    command: ["npm", "run", "dev"]
   
   # user service pushed image
   server-user:
