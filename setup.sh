@@ -1,6 +1,6 @@
 #!/bin/bash
-# <Working on this!!>
-# Parent folder for all services
+
+# Parent folder for all services in one location
 PROJECT_ROOT=../vteam06-elspark
 
 mkdir -p $PROJECT_ROOT
