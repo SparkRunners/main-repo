@@ -7,6 +7,7 @@ How to Configure the Project on Local Development Machines
   - [Table of contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Project Structure and Repository Cloning](#project-structure-and-repository-cloning)
+  - [Applications are reachable on the following routes on you local mashines after docker-composes sucessfully:](#applications-are-reachable-on-the-following-routes-on-you-local-mashines-after-docker-composes-sucessfully)
   - [How to work during development phase (i.e Daily flow)](#how-to-work-during-development-phase-ie-daily-flow)
     - [Recommended Git Workflow Exmaple](#recommended-git-workflow-exmaple)
   - [Testing Code Changes in the Docker Environment](#testing-code-changes-in-the-docker-environment)
@@ -38,24 +39,33 @@ This is how your project tree should look after following the guide and after ge
   chmod +x setup.sh
 ```
 
-1. Use the shell script 'setup.sh' to get all the git repositories
+2. Use the shell script 'setup.sh' to get all the git repositories
 ```bash
   ./setup.sh
 ```
-1. After the script finishes, all repositories will be under vteam06, and the containers can be started with Docker Compose from the main-repo folder.
+3. After the script finishes, all repositories will be under vteam06, and the containers can be started with Docker Compose from the main-repo folder.
 You can safely delete the older main-repo folder as 
 it is now inside the new vteam06-elspark and is now ready to use.
 ```bash
   cd ..
   rm -rf main-repo
 ```
-1.  Now move to the new project folder where all the services can be started with the help of docker-compose
+4.  Now move to the new project folder where all the services can be started with the help of docker-compose
 ```bash
   cd vteam06-elspark/
   cd main-repo/
   docker-compose up -d
 ```
------
+
+## Applications are reachable on the following routes on you local mashines after docker-composes sucessfully:
+You can also check the latest ports from the dokcer-compose.yml file or via the command 'docker ps a':
+
+- auth-server-service: http://localhost:3001/
+- user-server-service: http://localhost:3002/
+- frontend-user-service: http://localhost:3003/
+- frontend-admin-service: http://localhost:3004/
+- frontend-user-mobile: http://localhost:3005/
+
 -----
 ## How to work during development phase (i.e Daily flow)
 This is an example of; when you are working on the auth-server-service
@@ -65,7 +75,6 @@ This is an example of; when you are working on the auth-server-service
 ```bash
  cd ../auth-server-service
 ```
-
 2. Pull the latest updates:
 ```bash
  git pull origin dev

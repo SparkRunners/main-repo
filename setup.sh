@@ -16,6 +16,8 @@ git clone https://github.com/SparkRunners/user-server-service.git $PROJECT_ROOT/
 # admin and user UI two FE repos
 git clone https://github.com/SparkRunners/frontend-user-service.git $PROJECT_ROOT/frontend-user-service
 git clone https://github.com/SparkRunners/frontend-admin-service.git $PROJECT_ROOT/frontend-admin-service
+# clone user mobile app
+git clone https://github.com/SparkRunners/frontend-user-mobile.git $PROJECT_ROOT/frontend-user-mobile
 
 
 echo "Starting containers..."
