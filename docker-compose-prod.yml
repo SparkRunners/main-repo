@@ -1,4 +1,4 @@
-# This yml will work after the images have been created of the Basic implementation of the fullstack app
+# This yml will work after the images have been created and psuhed of the Basic implementation of the fullstack app
 version: "3.9"
 
 networks:
@@ -8,72 +8,51 @@ networks:
 services:
   # auth service pushed image service
   server-auth:
-  # Uncomment next line after building the iamges and pushing to dockerhub and comment out the build task lines for all services.
-    # image: hihassan1998/spark-auth-server:1.0
-    build: ../auth-server-service 
+    image: hihassan1998/spark-auth-server:1.0
     container_name: auth-api-server
     networks:
       - bth-spark-net
     ports:
       - "3001:3000"
     restart: unless-stopped
-    volumes:
-      - ../auth-server-service:/app
-    command: ["npm", "run", "dev"]
   
   # user service pushed image
   server-user:
-    # image: hihassan1998/spark-user-server:1.0
-    build: ../user-server-service
+    image: hihassan1998/spark-user-server:1.0
     container_name: user-api-server
     networks:
       - bth-spark-net
     ports:
       - "3002:3000"
     restart: unless-stopped
-    volumes:
-      - ../user-server-service:/app
-    command: ["npm", "run", "dev"]
   
   # # frontend service pushed image user UI
   # webclientuser:
   #   # image: hihassan1998/spark-webclient-user:1.0
-  #   build: ../frontend-user-service
   #   container_name: spark-webclient-user
   #   networks:
   #     - bth-spark-net
   #   ports:
   #     - "3006:5173"
   #   restart: unless-stopped
-  #   # command: ["npm", "run", "dev", "--", "--host"]
-  #   command: ["sh", "-c", "npm install && npm run dev -- --host"]
-  #   volumes:
-  #     - ../frontend-user-service:/app:cached
   
   # frontend service pushed image admin UI
   webclientadmin:
-    # image: hihassan1998/spark-webclient-admin:1.0
-    build: ../frontend-admin-service
+    image: hihassan1998/spark-webclient-admin:1.0
     container_name: spark-webclient-admin
     networks:
       - bth-spark-net
     ports:
       - "3005:5173"
     restart: unless-stopped
-    command: ["sh", "-c", "npm install && npm run dev -- --host"]
-    volumes:
-      - ../frontend-admin-service:/app:cached
   
   # frontend user mobile image
   # webclientusermob:
   #   # image: hihassan1998/spark-webclient-user-mobile:1.0
-  #   build: ../frontend-user-mobile
   #   container_name: spark-webclient-user-mobile
   #   networks:
   #     - bth-spark-net
   #   ports:
   #     - "3006:5173"
   #   restart: unless-stopped
-  #   command: ["sh", "-c", "npm install && npm run dev -- --host"]
-  #   volumes:
-  #     - ../frontend-user-mobile:/app:cached
+

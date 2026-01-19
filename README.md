@@ -1,52 +1,36 @@
 # main-repo
 
-## Innehållsförteckning
+## Tabel of contents
 - [main-repo](#main-repo)
-  - [Innehållsförteckning](#innehållsförteckning)
-  - [Beskrivning](#beskrivning)
-  - [Installation och körning](#installation-och-körning)
-    - [Express Application / Server Körning](#express-application--server-körning)
-    - [Läsa auth api dokumentation](#läsa-auth-api-dokumentation)
-## Beskrivning
+  - [Tabel of contents](#tabel-of-contents)
+  - [Description](#description)
+  - [Installation and runnning](#installation-and-runnning)
+  - [How to Run the Project with Docker Compose](#how-to-run-the-project-with-docker-compose)
+
+
+## Description
 This repo contains the docker-compose file to start up the project locally with volumes attached for easy changing in the images of the various projeckt related micro-services.
 
+## Installation and runnning
+Full instructions for cloning all required repositories and running the project locally with Docker are documented here:
+[docker-env-setup.md](./docker-env-setup.md)
 
 
-## Installation och körning
-För att få appen att fungera behövde vi göra:
-```bash
- git clone HTML länk-till-repo
-```
-För att starta alla tjänster:
-```bash
-docker-compose up
-```
-För att stänga alla tjänster:
-```bash
-docker-compose down
-```
+## How to Run the Project with Docker Compose
+This project includes two separate Docker Compose configurations to support both development and production workflows.
 
-Nå frontenden lokal på din maskin genom att kopiera och klistra in fäljande url i ditt favorit webbläsare
-```bash
-http://localhost:PORT_FRÅN_FE_CONTAINER
-```
-
-### Express Application / Server Körning
-1. Köra container servicen auth-server:
-```bash
- composer-up auth-server
-```
-2. Installera beroenden:
+1. Development (local build + volumes)
+- Builds images locally from your code
+- Mounts local folders so changes are visible immediately
+- Starts servers in development mode with hot reload
 
 ```bash
- npm install
+docker-compose -f docker-compose.yml up
 ```
-3. Starta backend-servern:
+2. Production (images from Docker Hub)
+- Pulls pre-built images from Docker Hub
+- No need for local code or manual builds
+- Runs the app services, ready for deployment
 ```bash
- npm start
-```
-### Läsa auth api dokumentation
-1. Navigera till backend-api-docs:
-```bash
- http://localhost:5000/api-docs/v1
+ docker-compose -f docker-compose-prod.yml up
 ```
