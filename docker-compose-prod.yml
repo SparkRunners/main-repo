@@ -27,14 +27,14 @@ services:
     restart: unless-stopped
   
   # # frontend service pushed image user UI
-  # webclientuser:
-  #   # image: hihassan1998/spark-webclient-user:1.0
-  #   container_name: spark-webclient-user
-  #   networks:
-  #     - bth-spark-net
-  #   ports:
-  #     - "3006:5173"
-  #   restart: unless-stopped
+  webclientuser:
+    image: hihassan1998/spark-webclient-user:1.0
+    container_name: spark-webclient-user
+    networks:
+      - bth-spark-net
+    ports:
+      - "3006:5173"
+    restart: unless-stopped
   
   # frontend service pushed image admin UI
   webclientadmin:
@@ -45,7 +45,10 @@ services:
     ports:
       - "3005:5173"
     restart: unless-stopped
-  
+    environment:
+    - VITE_AUTH_API_URL=http://localhost:3000
+    - VITE_SCOOTER_API_URL=http://localhost:3000/api/v1
+
   # frontend user mobile image
   # webclientusermob:
   #   # image: hihassan1998/spark-webclient-user-mobile:1.0

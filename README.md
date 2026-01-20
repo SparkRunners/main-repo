@@ -69,5 +69,6 @@ They are used by `docker-compose-prod.yml` and allow the application to run with
 | Auth API Server | `hihassan1998/spark-auth-server:1.0` | https://hub.docker.com/r/hihassan1998/spark-auth-server |
 | User API Server | `hihassan1998/spark-user-server:1.0` | https://hub.docker.com/r/hihassan1998/spark-user-server |
 | Admin Frontend | `hihassan1998/spark-webclient-admin:1.0` | https://hub.docker.com/r/hihassan1998/spark-webclient-admin |
+| Admin Frontend | `hihassan1998/spark-webclient-user:1.0` | https://hub.docker.com/r/hihassan1998/spark-webclient-user |
 
 
